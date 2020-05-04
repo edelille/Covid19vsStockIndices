@@ -95,8 +95,8 @@ function main() {
     startIntervalTimer();
 
     queue()
-    .defer(d3.json, 'world_countries.json')
-    .defer(d3.tsv, 'world_population.tsv')
+    .defer(d3.json, 'src/world_countries.json')
+    .defer(d3.tsv, 'src/world_population.tsv')
     .await(ready);
 
     var counter;

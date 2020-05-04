@@ -156,3 +156,8 @@ body h1:first-child {
   stroke: steelblue;
   stroke-width: 2px;
 }
+
+.multi-line-chart {
+  width: auto;
+  height: auto;
+}
