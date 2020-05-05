@@ -1,10 +1,6 @@
 // This project uses data from CSSEGISandData's Github, availiable here:
 //  https://github.com/CSSEGISandData/COVID-19
 
-// Making sure everything loads up
-d3.select('.d3-h1-01').style('color','blue');
-
-
 // Function Space
 function saveConfirmedCasesDataset(dataset) { confirmedCasesArr = dataset.data; }
 function displayDataset() { console.log(confirmedCasesArr); }
@@ -19,11 +15,9 @@ D-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid1
         download: true,
         headers: true,
         complete: function (results) {
-            d3.select('body').append('p').text(`Successful loading of d
-                ata from https://github.com/CSSEGISandData/COVID-19`);
+            d3.select('body').append('p')
+            .text(`Successful loading of data from https://github.com/CSSEGISandData/COVID-19`);
             saveConfirmedCasesDataset(results);
-            //displayDataset(results);
-
             // Call main after completion of load of data for synchronous JS loading
             main();
         }
@@ -51,28 +45,28 @@ function main() {
 
     var color = d3.scaleThreshold()
     .domain([
+        10,
         100,
+        500,
         1000,
         5000,
         10000,
         50000,
         100000,
         500000,
-        1000000,
-        5000000,
-        15000000
+        1500000
     ])
     .range([
-        'rgb(247,251,255)',
-        'rgb(222,235,247)', 
-        'rgb(198,219,239)', 
-        'rgb(158,202,225)',
-        'rgb(107,174,214)',
-        'rgb(66,146,198)',
-        'rgb(33,113,181)',
-        'rgb(8,81,156)',
-        'rgb(8,48,107)',
-        'rgb(3,19,43)'
+        'rgb(4,178,231)',
+        'rgb(21,158,205)', 
+        'rgb(38,138,179)', 
+        'rgb(55,118,154)',
+        'rgb(72,98,128)',
+        'rgb(100,79,102)',
+        'rgb(120,59,77)',
+        'rgb(180,39,51)',
+        'rgb(210,19,25)',
+        'rgb(255,0,0)'
     ]);
 
     const svg = d3.select('.map-cont')
@@ -92,25 +86,55 @@ function main() {
     var listOfCountries = [];
     var jsonFile;
 
-    startIntervalTimer();
+    window.setInterval(repeatUpdates, 50);
 
     queue()
     .defer(d3.json, 'src/world_countries.json')
-    .defer(d3.tsv, 'src/world_population.tsv')
     .await(ready);
 
     var counter;
+    var simSpeed;
 
-    function startIntervalTimer() { 
+    function startChoro() { 
         counter = 1;
-        maptimer = setInterval(repeatUpdates, 50);
+        maptimer = setInterval(choroPlay, simSpeed);
     }
 
-    function repeatUpdates() {
-        if (counter > 100)
+    function choroPlay() {
+        if (counter > 102)
             window.clearInterval(maptimer);
         updateValues(counter);
-        counter++;
+        updateDateText(counter);
+        counter++;     
+    }
+
+    function updateDateText(days) {
+        var tD = new Date(2020,1,22);
+        tD.setDate(tD.getDate() + Number(days));
+        var datestr = "Date displayed: "+tD.getMonth()+"."+tD.getDate() + "." + tD.getFullYear();
+        document.getElementById("dateAt").innerHTML = datestr;
+    }
+    
+    function repeatUpdates() {
+        var slider = document.getElementById("dayRange");
+        var speedslider = document.getElementById("speedAnimation");
+
+        d3.select("#dayRange").on("click", () => {
+            console.log(slider.value);
+            updateValues(Number(slider.value));
+            updateDateText(slider.value);
+        });
+
+        d3.select("#speedAnimation").on("click", () => {
+            simSpeed = 2000 / Math.sqrt(2*speedslider.value);
+            var speedstr = "Simulation speed: "+speedslider.value+"%";
+            document.getElementById("speedAt").innerHTML = speedstr;
+        }); 
+
+        d3.select("#choroplay").on("click", () => {
+            startChoro();
+        }); 
+
     }
 
     function ready(error, data) {
@@ -181,7 +205,8 @@ function main() {
         
 
         //Update Visual fill colors
-        d3.selectAll('path')//select all the countries and prepare for a transition to new values
+        d3.select('.countries')
+        .selectAll('path')//select all the countries and prepare for a transition to new values
         .style('fill', (d) => {
             return color(d.cases)
         });
@@ -192,3 +217,10 @@ function main() {
 
 }
 
+
+var script = document.createElement('script'); 
+          
+script.src =  
+"js/stocks.js"; 
+  
+document.head.appendChild(script) 

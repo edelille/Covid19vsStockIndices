@@ -3,9 +3,10 @@
     margin: 0;
     list-style: none;
     text-decoration: none;
+    font-family: "Montserrat";
 }
 
-body h1:first-child {
+.css-h1-01 {
     color: red;
 }
 
@@ -13,7 +14,8 @@ body h1:first-child {
     width: 100vw;
     height: 80vh;
     border-radius: 2px;
-    border-color: black;
+    border: solid black;
+    margin: auto;
 }
 
 .names {
@@ -160,4 +162,266 @@ body h1:first-child {
 .multi-line-chart {
   width: auto;
   height: auto;
+  border: 2px solid black;
+}
+
+.header {
+  width: 100%;
+  height: 80px;
+  display: block;
+  background-color: #101010;
+  overflow: hidden;
+}
+.inner-header {
+  width: 1000px;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  background-color: #101010;
+  color: white;
+}
+
+.logo-container {
+  height: 100%;
+  display: table;
+  float: left;
+  background-color: #101010;
+
+  /* This is to adjust for the main navigation bar */
+  padding-left: 20px;
+}
+.logo-container a {
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.logo-container h1 {
+  color: white;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  font-family: "Montserrat";
+  font-size: 32px;
+  font-weight: 200;
+}
+.logo-container h1 span {
+  font-weight: 800;
+}
+
+.basic-navigation {
+  height: 100%;
+  float: right;
+  margin-bottom: 0px;
+}
+.basic-navigation a {
+  height: 100%;
+  display: table;
+  float: left;
+  padding: 0px 20px;
+}
+.basic-navigation a li {
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+  font-family: "Montserrat";
+  font-size: 16px;
+}
+
+.redLine {
+  height: 50px;
+  width: 100%;
+  background-color: red;
+}
+
+.footer {
+  width: 100vw;
+  display: block;
+  overflow: hidden;
+  padding: 70px 0;
+  box-sizing: border-box;
+  background-color: #18181a;
+}
+
+.inner-footer {
+  display: block;
+  margin: 0 auto;
+  width: 1100px;
+  height: 100%;
+}
+
+.inner-footer .logo-container {
+  display: block;
+  width: 35%;
+  float: left;
+  height: 100%;
+  background-color: #18181a;
+}
+
+.inner-footer .logo-container img {
+  width: auto;
+  height: 120px;
+}
+
+.inner-footer .footer-third {
+  width: calc(21.6666667% - 20px);
+  margin-right: 10px;
+  float: right;
+  height: 100%;
+  color: white;
+}
+
+.inner-footer .footer-third:last-child {
+  margin: 0px;
+}
+.inner-footer .footer-third h1 {
+  font-family: Montserrat;
+  font-size: 20px;
+  color: white;
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.inner-footer .footer-third li a {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 200;
+  color: white;
+  display: block;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.inner-footer .footer-third li {
+  display: inline-block;
+  padding: 0 5px;
+  font-size: 20px;
+}
+
+.inner-footer .footer-third span {
+  color: white;
+  font-family: montserrat;
+  font-size: 16px;
+  font-weight: 200;
+  display: block;
+  width: 100%;
+  padding-top: 20px;
+}
+
+/* Slider */
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+  text-align: center;
+}
+/* speed  Slider */
+.speedslidecontainer {
+  width: auto; /* Width of the outside container */
+  text-align: center;
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+.speedslidecontainer .slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: red; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.speedslidecontainer .slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: magenta; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.date-cont {
+  padding: 10px;
+  position: absolute;
+  font-family: "Montserrat";
+  font-size: 20px;
+  font-weight: 800;
+  left: 45%;
+  bottom: 30%;
+  background-color: black;
+  color: white;
+}
+
+.buttonpanel {
+  width: fit-content;
+  margin: auto;
+  border: 1px solid black;
+}
+
+#choroplay {
+  margin: auto;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.text-cont {
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 50%;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.text-cont p {
+  padding: 20px;
+}
+.text-cont ul {
+  padding: 30px;
+  text-align: left;
+}
+.line-chart-cont {
+  width: 100vw;
+  border: 2px solid black;
+}
+
+.line-chart-cont .inner {
+  width: fit-content;
+  margin: auto;
 }

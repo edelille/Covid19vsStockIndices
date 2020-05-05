@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lam Nguyen's Final Project</title>
+    <meta name="author" content="Lam Nguyen"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet"/>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/queue.v1.min.js"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
@@ -15,19 +17,126 @@
     <script src="https://unpkg.com/papaparse@5.2.0/papaparse.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
+<header>
+    <div class="header">
+        <div class="inner-header">
+            <div class="logo-container">
+                <a href="home"><h1>COVID-19 versus Stock Indices</h1></a>
+            </div>
+
+            <ul class="basic-navigation">
+                <a href="home"><li>Home</li></a>
+                <a href="about"><li>About me</li></a>
+                <a href="contact"><li>Contact us</li></a>
+            </ul>
+        </div>
+    </div>
+</header>
 <body>
-    <h1>This is a header, edited by css/style.css</h1>
-    <h1 class="d3-h1-01">This is a header, edited by js/index.js</h1>
-    <svg class="map-cont"></svg>
+    <svg class="map-cont">
+        <div class="date-cont">
+            <p id="dateAt">Date displayed: 5.1.2020</p>
+        </div>
+    </svg>
+    <div class="controlpanel">
+        <div class="slidecontainer">
+            <input type="range" min="1" max="100" value="50" class="slider" id="dayRange">
+        </div>
+        <br/>
+        <div class="buttonpanel">
+            <div class="speedslidecontainer">
+                <input type="range" min="1" max="100" value="50" class="slider" id="speedAnimation">
+            </div>
+            <p id="speedAt">Simulation speed: 50%</p>
+            <button type="button" id="choroplay">Play the choropleth animation</button>
+        </div>
+    </div>
+    <div class="text-cont">
+        <h4>Introduction</h4>
+        <p>	As 2020, SARS-COV-2 or more commonly known as the Novel Coronavirus 2019 has devastated equities across all global markets. From affecting airlines in China, region lockdowns, frozen supply chains to mass hysteria. Coronavirus has affected the global markets nearly as hard as the 2008 crisis as corporations and companies alike scramble to refit to remote operation. Loss of productivity and consumers worldwide as practice of social distancing enacts in almost all regions. <br/>
+	        The purpose of the visualization is to pinpoint key events along the Coronavirus’s timeline to pinpoint correlations of key shutdowns, country announcements, and key news headlines effect onto stock market indices such as the Dow Jones Industrial Average(DJI) for the representation of American markets, Nikkei 225 (NI225) for the Japanese Market, Financial Times Stock Exchange (FTSE) for the London markets. By tracking region specific headlines, and their effects on their correspondent stock exchange alike with their effects on neighboring or global stock exchanges as well.
+        </p>
+
+        <h4>Datasets Used</h4>
+        <p>
+        All historical data for the stock indices will be downloaded off of Yahoo! Finance. An example URL for the DJI data is as follows, the formatted Data includes 7 columns and n rows, n being the amount of days to be tracked. 
+        <br/>
+        <a href="https://finance.yahoo.com/quote/%5EDJI/history?p=%5EDJI">Link to Yahoo Finance</a>
+        <br/>
+        For historical data on number of infections, I will utilize data from situation reports from the World Health Organization, which can be found here: there are 7 columns and n rows, n being the amount of countries. For this dataset, there are only three important columns. 
+        <br/>
+        <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/">Link to the World Health Organization</a>
+        <br/>
+        Likewise, data used on this website is all open source and can be found at the following link:      
+        <br/>
+        <a href="https://github.com/CSSEGISandData/COVID-19">Link to CSSEGISandData's COVID-19 Repository</a>
+        </p>
+
+        <h4>Description of Data Visualization Above</h4>
+        <p>
+        The Data Visualization above includes a Choropleth or a shaded in map. The map is shaded in respectively towards the amount of cases of COVID19 per each country. You can view the cases of each specific country on hovering over each respective country.
+        <br/>
+        There are also some interactive parts of the above map:
+        <ul>
+            <li><strong>Timeline Slider:</strong> Move the slider's thumb to view different dates starting from 1/23/2020 to current</li>
+            <li><strong>Simulation Speed Slider:</strong> Move this slider to change the speed of data playback</li>
+            <li><strong>Play Button:</strong> Click on this button to start the animation</li>
+        </ul>
+        </p>
+
+        <h4>Work in Progress / Future Work</h4>
+        <p>
+        </p>
+        <br/>
+
+
+    </div>
+    <div class="line-chart-cont">
+        <div class="inner">
+            <svg class="multi-line-chart"></svg>
+        </div>
+    </div>
+    <br></br>
     <label class="guideline">
         Show Guideline & Curtain
         <input type="checkbox" id="show_guideline" />
     </label>
-    <svg class="multi-line-chart"></svg>
-
 
     <!-- imported script space below -->
+    <script src-"stocks.js"></script>
     <script src="js/index.js"></script>
-    <script src-"js/linechart.js"></script>
 </body>
+<footer>
+<div class="footer">
+    <div class="inner-footer">
+        <div class="logo-container">
+            <img src="src/logo512.png" alt="Lam Signature" />
+        </div>
+        <div class="footer-third">
+            <h1>More</h1>
+            <li>
+                <a href="https://www.sc.edu/">
+                    UofSC
+                </a>
+            </li>
+            <li>
+                <a href="https://sc.edu/study/colleges_schools/engineering_and_computing/">
+                    College of Engineering and Computing
+                </a>
+            </li>
+            <li>
+                <a href="https://www.sc.edu/study/colleges_schools/engineering_and_computing/faculty-staff/colecasey.php">
+                    My Instructor
+                </a>
+            </li>
+        </div>
+        <div class="footer-third">
+            <h1>Links</h1>
+            <li>
+                <a href="https://github.com/lamn18/Covid19vsStockIndices">My Github</a>
+            </li><br/>
+        </div>
+    </div>
+</div>
+</footer>
 </html>
